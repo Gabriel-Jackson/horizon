@@ -129,13 +129,9 @@ class HorizonServiceProvider extends ServiceProvider
             ]);
         }
 
-<<<<<<< HEAD
-        $this->commands([Console\SnapshotCommand::class]);
-=======
         $this->commands([
             Console\SnapshotCommand::class,
         ]);
->>>>>>> bc8be47... Customização final do Horizon
     }
 
     /**
