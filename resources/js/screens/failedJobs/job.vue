@@ -24,11 +24,7 @@
         mounted() {
             this.loadFailedJob(this.$route.params.jobId);
 
-<<<<<<< HEAD
-            document.title = "Horizon - Failed Jobs";
-=======
             document.title = "Api Produtos - Jobs com Falha";
->>>>>>> bc8be47... Customização final do Horizon
 
             this.interval = setInterval(() => {
                 this.reloadRetries();
@@ -126,17 +122,6 @@
 <template>
     <div>
         <div class="card">
-<<<<<<< HEAD
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h5 v-if="!ready">Job Preview</h5>
-                <h5 v-if="ready">{{job.name}}</h5>
-
-                <button class="btn btn-outline-primary" v-on:click.prevent="retry(job.id)">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="icon fill-primary" :class="{spin: retrying}">
-                        <path d="M10 3v2a5 5 0 0 0-3.54 8.54l-1.41 1.41A7 7 0 0 1 10 3zm4.95 2.05A7 7 0 0 1 10 17v-2a5 5 0 0 0 3.54-8.54l1.41-1.41zM10 20l-4-4 4-4v8zm0-12V0l4 4-4 4z"/>
-                    </svg>
-                </button>
-=======
             <div class="card-header">
                 <h5 class="card-title" v-if="!ready">Pré-visualizar</h5>
                 <h5 class="card-title" v-if="ready">{{job.name}}</h5>
@@ -147,7 +132,6 @@
                         </svg>
                     </button>
                 </div>
->>>>>>> bc8be47... Customização final do Horizon
             </div>
 
             <div v-if="!ready" class="d-flex align-items-center justify-content-center card-bg-secondary p-5 bottom-radius">
@@ -155,11 +139,7 @@
                     <path d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
                 </svg>
 
-<<<<<<< HEAD
-                <span>Loading...</span>
-=======
                 <span>Carregando...</span>
->>>>>>> bc8be47... Customização final do Horizon
             </div>
 
             <div class="card-body card-bg-secondary" v-if="ready">
@@ -168,21 +148,6 @@
                     <div class="col">{{job.id}}</div>
                 </div>
                 <div class="row mb-2">
-<<<<<<< HEAD
-                    <div class="col-md-2"><strong>Queue</strong></div>
-                    <div class="col">{{job.queue}}</div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-md-2"><strong>Attempts</strong></div>
-                    <div class="col">{{job.payload.attempts}}</div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-md-2"><strong>Retries</strong></div>
-                    <div class="col">{{job.retried_by.length}}</div>
-                </div>
-                <div class="row mb-2" v-if="job.payload.retry_of">
-                    <div class="col-md-2"><strong>Retry of ID</strong></div>
-=======
                     <div class="col-md-2"><strong>Fila</strong></div>
                     <div class="col">{{job.queue}}</div>
                 </div>
@@ -196,7 +161,6 @@
                 </div>
                 <div class="row mb-2" v-if="job.payload.retry_of">
                     <div class="col-md-2"><strong>Nova tentativa do ID</strong></div>
->>>>>>> bc8be47... Customização final do Horizon
                     <div class="col">
                          <a :href="Horizon.basePath + '/failed/' + job.payload.retry_of">
                             {{ job.payload.retry_of }}
@@ -216,19 +180,11 @@
                     </div>
                 </div>
                 <div class="row mb-2">
-<<<<<<< HEAD
-                    <div class="col-md-2"><strong>Pushed At</strong></div>
-                    <div class="col">{{ readableTimestamp(job.payload.pushedAt) }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2"><strong>Failed At</strong></div>
-=======
                     <div class="col-md-2"><strong>Adicionado em</strong></div>
                     <div class="col">{{ readableTimestamp(job.payload.pushedAt) }}</div>
                 </div>
                 <div class="row">
                     <div class="col-md-2"><strong>Falhou em</strong></div>
->>>>>>> bc8be47... Customização final do Horizon
                     <div class="col">{{readableTimestamp(job.failed_at)}}</div>
                 </div>
             </div>
@@ -236,15 +192,9 @@
 
         <div class="card mt-4" v-if="ready">
             <div class="card-header d-flex align-items-center justify-content-between">
-<<<<<<< HEAD
-                <h5>Exception</h5>
-            </div>
-            <div>
-=======
                 <h5>Exceções</h5>
             </div>
             <div class="card-body">
->>>>>>> bc8be47... Customização final do Horizon
                 <stack-trace :trace="job.exception.split('\n')"></stack-trace>
             </div>
         </div>
@@ -252,11 +202,7 @@
 
         <div class="card mt-4" v-if="ready">
             <div class="card-header d-flex align-items-center justify-content-between">
-<<<<<<< HEAD
-                <h5>Data</h5>
-=======
                 <h5>Dados</h5>
->>>>>>> bc8be47... Customização final do Horizon
             </div>
 
             <div class="card-body code-bg text-white">
@@ -266,11 +212,7 @@
 
         <div class="card mt-4" v-if="ready && job.retried_by.length">
             <div class="card-header d-flex align-items-center justify-content-between">
-<<<<<<< HEAD
-                <h5>Recent Retries</h5>
-=======
                 <h5>Tentativas Recentes</h5>
->>>>>>> bc8be47... Customização final do Horizon
             </div>
 
             <table class="table table-hover table-sm mb-0">
@@ -278,11 +220,7 @@
                 <tr>
                     <th>Job</th>
                     <th>ID</th>
-<<<<<<< HEAD
-                    <th class="text-right">Retry Time</th>
-=======
                     <th class="text-right">Tempo de tentativa</th>
->>>>>>> bc8be47... Customização final do Horizon
                 </tr>
                 </thead>
 

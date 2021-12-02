@@ -2,12 +2,9 @@
 
 namespace Laravel\Horizon\Http\Controllers;
 
-<<<<<<< HEAD
-=======
 use App\Models\CompletedJob;
 use Carbon\Carbon;
 use DateTime;
->>>>>>> bc8be47... Customização final do Horizon
 use Laravel\Horizon\Contracts\JobRepository;
 use Laravel\Horizon\Contracts\MasterSupervisorRepository;
 use Laravel\Horizon\Contracts\MetricsRepository;
@@ -23,8 +20,6 @@ class DashboardStatsController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-=======
         $completed_job = CompletedJob::all()->mapToGroups(function($item) { 
             
             $key = (new DateTime($item["completed_at"]))->format("d/m/Y");
@@ -37,7 +32,6 @@ class DashboardStatsController extends Controller
                 ]
             ];
         });
->>>>>>> bc8be47... Customização final do Horizon
         return [
             'failedJobs' => app(JobRepository::class)->countRecentlyFailed(),
             'jobsPerMinute' => app(MetricsRepository::class)->jobsProcessedPerMinute(),
@@ -52,10 +46,7 @@ class DashboardStatsController extends Controller
             'recentJobs' => app(JobRepository::class)->countRecent(),
             'status' => $this->currentStatus(),
             'wait' => collect(app(WaitTimeCalculator::class)->calculate())->take(1),
-<<<<<<< HEAD
-=======
             'completed_jobs' => $completed_job->toArray(),
->>>>>>> bc8be47... Customização final do Horizon
         ];
     }
 

@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-<script type="text/ecmascript-6">
-    import Chart from 'chart.js';
-
-    export default {
-        props: ['data'],
-=======
 <script >
     import Chart from 'chart.js';
 
     export default {
         props: ['data','options'],
->>>>>>> bc8be47... Customização final do Horizon
 
         data(){
             return {

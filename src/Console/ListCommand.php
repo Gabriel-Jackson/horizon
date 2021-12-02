@@ -4,10 +4,7 @@ namespace Laravel\Horizon\Console;
 
 use Illuminate\Console\Command;
 use Laravel\Horizon\Contracts\MasterSupervisorRepository;
-<<<<<<< HEAD
-=======
 use Laravel\Horizon\MasterSupervisor;
->>>>>>> bc8be47... Customização final do Horizon
 
 class ListCommand extends Command
 {
@@ -34,13 +31,9 @@ class ListCommand extends Command
     public function handle(MasterSupervisorRepository $masters)
     {
         $masters = $masters->all();
-<<<<<<< HEAD
-
-=======
         $this->info("Supervisor Repository: ". MasterSupervisor::basename());
         
         
->>>>>>> bc8be47... Customização final do Horizon
         if (empty($masters)) {
             return $this->info('No machines are running.');
         }

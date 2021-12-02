@@ -170,11 +170,7 @@ class JobPayload implements ArrayAccess
      * @param  string  $offset
      * @return bool
      */
-<<<<<<< HEAD
-    public function offsetExists($offset): bool
-=======
     public function offsetExists($offset)
->>>>>>> bc8be47... Customização final do Horizon
     {
         return array_key_exists($offset, $this->decoded);
     }
@@ -185,10 +181,6 @@ class JobPayload implements ArrayAccess
      * @param  string  $offset
      * @return mixed
      */
-<<<<<<< HEAD
-    #[\ReturnTypeWillChange]
-=======
->>>>>>> bc8be47... Customização final do Horizon
     public function offsetGet($offset)
     {
         return $this->decoded[$offset];
@@ -201,11 +193,7 @@ class JobPayload implements ArrayAccess
      * @param  mixed  $value
      * @return void
      */
-<<<<<<< HEAD
-    public function offsetSet($offset, $value): void
-=======
     public function offsetSet($offset, $value)
->>>>>>> bc8be47... Customização final do Horizon
     {
         $this->decoded[$offset] = $value;
     }
@@ -216,11 +204,7 @@ class JobPayload implements ArrayAccess
      * @param  string  $offset
      * @return void
      */
-<<<<<<< HEAD
-    public function offsetUnset($offset): void
-=======
     public function offsetUnset($offset)
->>>>>>> bc8be47... Customização final do Horizon
     {
         unset($this->decoded[$offset]);
     }

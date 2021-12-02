@@ -2,10 +2,7 @@
 
 namespace Laravel\Horizon\Http\Controllers;
 
-<<<<<<< HEAD
-=======
 use App\Models\CompletedJob;
->>>>>>> bc8be47... Customização final do Horizon
 use Laravel\Horizon\Contracts\JobRepository;
 
 class JobsController extends Controller
@@ -38,11 +35,6 @@ class JobsController extends Controller
      */
     public function show($id)
     {
-<<<<<<< HEAD
-        return (array) $this->jobs->getJobs([$id])->map(function ($job) {
-            return $this->decode($job);
-        })->first();
-=======
         $job = $this->jobs->getJobs([$id])->map(function ($job) {
             return $this->decode($job);
         })->first();
@@ -52,7 +44,6 @@ class JobsController extends Controller
             $job['payload'] = json_decode($job['payload']);
         }
         return (array) ( $job );
->>>>>>> bc8be47... Customização final do Horizon
     }
 
     /**

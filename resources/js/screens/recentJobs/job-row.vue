@@ -8,21 +8,13 @@
             <small class="badge badge-secondary badge-sm"
                     v-tooltip:top="`Delayed for ${delayed}`"
                     v-if="delayed && (job.status == 'reserved' || job.status == 'pending')">
-<<<<<<< HEAD
-                Delayed
-=======
                 Atrasado
->>>>>>> bc8be47... Customização final do Horizon
             </small>
 
             <br>
 
             <small class="text-muted">
-<<<<<<< HEAD
-                Queue: {{job.queue}}
-=======
                 Fila: {{job.queue}}
->>>>>>> bc8be47... Customização final do Horizon
 
                 <span v-if="job.payload.tags && job.payload.tags.length" class="text-break">
                     | Tags: {{ job.payload.tags && job.payload.tags.length ? job.payload.tags.slice(0,3).join(', ') : '' }}<span v-if="job.payload.tags.length > 3"> ({{ job.payload.tags.length - 3 }} more)</span>
@@ -35,28 +27,16 @@
         </td>
 
         <td v-if="$route.params.type=='completed'" class="table-fit">
-<<<<<<< HEAD
-            {{ readableTimestamp(job.completed_at) }}
-        </td>
-
-        <td v-if="$route.params.type=='completed'" class="table-fit">
-            <span>{{ job.completed_at ? (job.completed_at - job.reserved_at).toFixed(2)+'s' : '-' }}</span>
-=======
             {{  readableTimestamp(job.completed_at) }}
         </td>
 
         <td v-if="$route.params.type=='completed'" class="text-right">
             <span>{{ runtime }}</span>
->>>>>>> bc8be47... Customização final do Horizon
         </td>
     </tr>
 </template>
 
-<<<<<<< HEAD
-<script type="text/ecmascript-6">
-=======
 <script >
->>>>>>> bc8be47... Customização final do Horizon
     import phpunserialize from 'phpunserialize'
     import moment from 'moment-timezone';
 
@@ -67,10 +47,6 @@
                 required: true
             }
         },
-<<<<<<< HEAD
-
-=======
->>>>>>> bc8be47... Customização final do Horizon
         computed: {
             unserialized() {
                 try {
@@ -91,8 +67,6 @@
 
                 return null;
             },
-<<<<<<< HEAD
-=======
 
             runtime() {
                 if(moment(this.job.completed_at).isValid()){
@@ -101,7 +75,6 @@
 
                 return "-"
             }
->>>>>>> bc8be47... Customização final do Horizon
         },
     }
 </script>

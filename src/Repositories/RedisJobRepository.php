@@ -224,11 +224,7 @@ class RedisJobRepository implements JobRepository
         $afterIndex = $afterIndex === null ? -1 : $afterIndex;
 
         return $this->getJobs($this->connection()->zrange(
-<<<<<<< HEAD
-            $type, $afterIndex + 1, $afterIndex + 50
-=======
             $type, $afterIndex + 1, $afterIndex + 10
->>>>>>> bc8be47... Customização final do Horizon
         ), $afterIndex + 1);
     }
 

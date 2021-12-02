@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-<script type="text/ecmascript-6">
-    import _ from 'lodash';
-    import moment from 'moment';
-
-    export default {
-        components: {},
-=======
 <script >
     import _ from 'lodash';
     import moment from 'moment';
@@ -18,7 +10,6 @@
             LineChart,
             MultipleChart
         },
->>>>>>> bc8be47... Customização final do Horizon
 
 
         /**
@@ -29,9 +20,6 @@
                 stats: {},
                 workers: [],
                 workload: [],
-<<<<<<< HEAD
-                ready: false,
-=======
                 prodsChartData: {
                     datasets: [
                         {
@@ -63,7 +51,6 @@
                 },
                 ready: false,
                 barChart: true
->>>>>>> bc8be47... Customização final do Horizon
             };
         },
 
@@ -72,12 +59,7 @@
          * Prepare the component.
          */
         mounted() {
-<<<<<<< HEAD
-            document.title = "Horizon - Dashboard";
-
-=======
             document.title = "Api Produtos - Dashboard";
->>>>>>> bc8be47... Customização final do Horizon
             this.refreshStatsPeriodically();
         },
 
@@ -96,13 +78,8 @@
              */
             recentJobsPeriod() {
                 return !this.ready
-<<<<<<< HEAD
-                    ? 'Jobs past hour'
-                    : `Jobs past ${this.determinePeriod(this.stats.periods.recentJobs)}`;
-=======
                     ? 'Jobs na última hora'
                     : `Jobs no último ${this.determinePeriod(this.stats.periods.recentJobs)}`;
->>>>>>> bc8be47... Customização final do Horizon
             },
 
 
@@ -111,13 +88,8 @@
              */
             failedJobsPeriod() {
                 return !this.ready
-<<<<<<< HEAD
-                    ? 'Failed jobs past 7 days'
-                    : `Failed jobs past ${this.determinePeriod(this.stats.periods.failedJobs)}`;
-=======
                     ? 'Jobs com falha nos últimos 7 dias'
                     : `Jobs com falha nos últimos ${this.determinePeriod(this.stats.periods.failedJobs)}`;
->>>>>>> bc8be47... Customização final do Horizon
             },
         },
 
@@ -135,33 +107,6 @@
                             this.stats.max_wait_time = _.values(response.data.wait)[0];
                             this.stats.max_wait_queue = _.keys(response.data.wait)[0].split(':')[1];
                         }
-<<<<<<< HEAD
-                    });
-            },
-
-
-            /**
-             * Load the workers stats.
-             */
-            loadWorkers() {
-                return this.$http.get(Horizon.basePath + '/api/masters')
-                    .then(response => {
-                        this.workers = response.data;
-                    });
-            },
-
-
-            /**
-             * Load the workload stats.
-             */
-            loadWorkload() {
-                return this.$http.get(Horizon.basePath + '/api/workload')
-                    .then(response => {
-                        this.workload = response.data;
-                    });
-            },
-
-=======
                         
                         this.loadChartData();
                     });
@@ -197,7 +142,6 @@
                 this.prodsChartData.datasets[1].data = data2;
                 this.prodsChartData.labels = labels;
             },
->>>>>>> bc8be47... Customização final do Horizon
 
             /**
              * Refresh the stats every period of time.
@@ -205,11 +149,6 @@
             refreshStatsPeriodically() {
                 Promise.all([
                     this.loadStats(),
-<<<<<<< HEAD
-                    this.loadWorkers(),
-                    this.loadWorkload(),
-=======
->>>>>>> bc8be47... Customização final do Horizon
                 ]).then(() => {
                     this.ready = true;
 
@@ -241,10 +180,7 @@
              * @returns {string}
              */
             humanTime(time) {
-<<<<<<< HEAD
-=======
                 
->>>>>>> bc8be47... Customização final do Horizon
                 return moment.duration(time, "seconds").humanize().replace(/^(.)|\s+(.)/g, function ($1) {
                     return $1.toUpperCase();
                 });
@@ -263,30 +199,6 @@
 
 <template>
     <div>
-<<<<<<< HEAD
-        <div class="card">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h5>Overview</h5>
-            </div>
-
-            <div class="card-bg-secondary">
-                <div class="d-flex">
-                    <div class="w-25 border-right border-bottom">
-                        <div class="p-4">
-                            <small class="text-uppercase">Jobs Per Minute</small>
-
-                            <h4 class="mt-4 mb-0">
-                                {{ stats.jobsPerMinute ? stats.jobsPerMinute.toLocaleString() : 0 }}
-                            </h4>
-                        </div>
-                    </div>
-
-                    <div class="w-25 border-right border-bottom">
-                        <div class="p-4">
-                            <small class="text-uppercase" v-text="recentJobsPeriod"></small>
-
-                            <h4 class="mt-4 mb-0">
-=======
 
         <div class="card card-default">
             <div class="card-header">
@@ -324,19 +236,11 @@
                             <small class="info-box-text text-uppercase" v-text="recentJobsPeriod"></small>
 
                             <h4 class="info-box-number mt-4 mb-0">
->>>>>>> bc8be47... Customização final do Horizon
                                 {{ stats.recentJobs ? stats.recentJobs.toLocaleString() : 0 }}
                             </h4>
                         </div>
                     </div>
 
-<<<<<<< HEAD
-                    <div class="w-25 border-right border-bottom">
-                        <div class="p-4">
-                            <small class="text-uppercase" v-text="failedJobsPeriod"></small>
-
-                            <h4 class="mt-4 mb-0">
-=======
                     <div class="info-box m-1 p-0">
                         <span class="info-box-icon bg-red rounded-0">
                             <i class="far fa-times-circle"></i>
@@ -345,32 +249,11 @@
                             <small class="info-box-text text-uppercase" v-text="failedJobsPeriod"></small>
 
                             <h4 class="info-box-number mt-4 mb-0">
->>>>>>> bc8be47... Customização final do Horizon
                                 {{ stats.failedJobs ? stats.failedJobs.toLocaleString() : 0 }}
                             </h4>
                         </div>
                     </div>
 
-<<<<<<< HEAD
-                    <div class="w-25 border-bottom">
-                        <div class="p-4">
-                            <small class="text-uppercase">Status</small>
-
-                            <div class="d-flex align-items-center mt-4">
-                                <svg v-if="stats.status == 'running'" class="fill-success" viewBox="0 0 20 20" style="width: 1.5rem; height: 1.5rem;">
-                                    <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM6.7 9.29L9 11.6l4.3-4.3 1.4 1.42L9 14.4l-3.7-3.7 1.4-1.42z"></path>
-                                </svg>
-
-                                <svg v-if="stats.status == 'paused'" class="fill-warning" viewBox="0 0 20 20" style="width: 1.5rem; height: 1.5rem;">
-                                    <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM7 6h2v8H7V6zm4 0h2v8h-2V6z"/>
-                                </svg>
-
-                                <svg v-if="stats.status == 'inactive'" class="fill-danger" viewBox="0 0 20 20" style=" width: 1.5rem; height: 1.5rem;">
-                                    <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm1.41-1.41A8 8 0 1 0 15.66 4.34 8 8 0 0 0 4.34 15.66zm9.9-8.49L11.41 10l2.83 2.83-1.41 1.41L10 11.41l-2.83 2.83-1.41-1.41L8.59 10 5.76 7.17l1.41-1.41L10 8.59l2.83-2.83 1.41 1.41z"/>
-                                </svg>
-
-                                <h4 class="mb-0 ml-2">{{ {running: 'Active', paused: 'Paused', inactive:'Inactive'}[stats.status] }}</h4>
-=======
                     <div class="info-box m-1 p-0">
                         <span class="info-box-icon bg-success rounded-0" 
                             v-if="stats.status == 'running'">
@@ -397,7 +280,6 @@
 
                             <div class="d-flex align-items-center mt-4 info-box-number">
                                 <h4 class="mb-0 ml-2">{{ {running: 'Ativo', paused: 'Parado', inactive:'Inativo'}[stats.status] }}</h4>
->>>>>>> bc8be47... Customização final do Horizon
                                 <small v-if="stats.status == 'running' && stats.pausedMasters > 0" class="mb-0 ml-2">({{ stats.pausedMasters }} paused)</small>
                             </div>
                         </div>
@@ -405,13 +287,6 @@
                 </div>
 
                 <div class="d-flex">
-<<<<<<< HEAD
-                    <div class="w-25 border-right">
-                        <div class="p-4 mb-0">
-                            <small class="text-uppercase">TOTAL PROCESSES</small>
-
-                            <h4 class="mt-4">
-=======
                     <div class="info-box m-1 p-0">
                         <span class="info-box-icon bg-secondary rounded-0">
                             <i class="fas fa-cogs"></i>
@@ -420,31 +295,11 @@
                             <small class="info-box-text text-uppercase">PROCESSOS TOTAIS</small>
 
                             <h4 class="info-box-number mt-4">
->>>>>>> bc8be47... Customização final do Horizon
                                 {{ stats.processes ? stats.processes.toLocaleString() : 0 }}
                             </h4>
                         </div>
                     </div>
 
-<<<<<<< HEAD
-                    <div class="w-25 border-right">
-                        <div class="p-4 mb-0">
-                            <small class="text-uppercase">MAX WAIT TIME</small>
-
-                            <h4 class="mt-4 mb-0">
-                                {{ stats.max_wait_time ? humanTime(stats.max_wait_time) : '-' }}
-                            </h4>
-
-                            <small class="mt-1" v-if="stats.max_wait_queue">({{ stats.max_wait_queue }})</small>
-                        </div>
-                    </div>
-
-                    <div class="w-25 border-right">
-                        <div class="p-4 mb-0">
-                            <small class="text-uppercase">MAX RUNTIME</small>
-
-                            <h4 class="mt-4">
-=======
                     <div class="info-box m-1 p-0">
                         <span class="info-box-icon bg-yellow rounded-0 text-white">
                             <i class="fas fa-hourglass-half"></i>
@@ -466,119 +321,14 @@
                             <small class="info-box-text text-uppercase">Executando há mais tempo</small>
 
                             <h4 class="info-box-number mt-4">
->>>>>>> bc8be47... Customização final do Horizon
                                 {{ stats.queueWithMaxRuntime ? stats.queueWithMaxRuntime : '-' }}
                             </h4>
                         </div>
                     </div>
-<<<<<<< HEAD
-
-                    <div class="w-25">
-                        <div class="p-4 mb-0">
-                            <small class="text-uppercase">MAX THROUGHPUT</small>
-
-                            <h4 class="mt-4">
-                                {{ stats.queueWithMaxThroughput ? stats.queueWithMaxThroughput : '-' }}
-                            </h4>
-                        </div>
-                    </div>
-=======
->>>>>>> bc8be47... Customização final do Horizon
                 </div>
 
             </div>
         </div>
-<<<<<<< HEAD
-
-        <div class="card mt-4" v-if="workload.length">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h5>Current Workload</h5>
-            </div>
-
-            <table class="table table-hover table-sm mb-0">
-                <thead>
-                <tr>
-                    <th>Queue</th>
-                    <th>Processes</th>
-                    <th>Jobs</th>
-                    <th class="text-right">Wait</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                    <template v-for="queue in workload">
-                        <tr>
-                            <td :class="{'font-weight-bold': queue.split_queues}">
-                                <span>{{ queue.name.replace(/,/g, ', ') }}</span>
-                            </td>
-                            <td :class="{'font-weight-bold': queue.split_queues}">{{ queue.processes ? queue.processes.toLocaleString() : 0 }}</td>
-                            <td :class="{'font-weight-bold': queue.split_queues}">{{ queue.length ? queue.length.toLocaleString() : 0 }}</td>
-                            <td :class="{'font-weight-bold': queue.split_queues}" class="text-right">{{ humanTime(queue.wait) }}</td>
-                        </tr>
-
-                        <tr v-for="split_queue in queue.split_queues">
-                            <td>
-                                <svg class="icon info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/>
-                                </svg>
-
-                                <span>{{ split_queue.name.replace(/,/g, ', ') }}</span>
-                            </td>
-                            <td>-</td>
-                            <td>{{ split_queue.length ? split_queue.length.toLocaleString() : 0 }}</td>
-                            <td class="text-right">{{ humanTime(split_queue.wait) }}</td>
-                        </tr>
-                    </template>
-                </tbody>
-            </table>
-        </div>
-
-
-        <div class="card mt-4" v-for="worker in workers" :key="worker.name">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h5>{{ worker.name }}</h5>
-
-                <svg v-if="worker.status == 'running'" class="fill-success" viewBox="0 0 20 20" style="width: 1.5rem; height: 1.5rem;">
-                    <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM6.7 9.29L9 11.6l4.3-4.3 1.4 1.42L9 14.4l-3.7-3.7 1.4-1.42z"></path>
-                </svg>
-
-                <svg v-if="worker.status == 'paused'" class="fill-warning" viewBox="0 0 20 20" style="width: 1.5rem; height: 1.5rem;">
-                    <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM7 6h2v8H7V6zm4 0h2v8h-2V6z"/>
-                </svg>
-            </div>
-
-            <table class="table table-hover table-sm mb-0">
-                <thead>
-                <tr>
-                    <th>Supervisor</th>
-                    <th>Processes</th>
-                    <th>Queues</th>
-                    <th class="text-right">Balancing</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <tr v-for="supervisor in worker.supervisors">
-                    <td>
-                        <svg v-if="supervisor.status == 'paused'" class="fill-warning mr-1" viewBox="0 0 20 20" style="width: 1rem; height: 1rem;">
-                            <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM7 6h2v8H7V6zm4 0h2v8h-2V6z"/>
-                        </svg>
-                        {{ superVisorDisplayName(supervisor.name, worker.name) }}
-                    </td>
-                    <td>{{ countProcesses(supervisor.processes) }}</td>
-                    <td>{{ supervisor.options.queue.replace(/,/g, ', ') }}</td>
-                    <td class="text-right" v-if="supervisor.options.balance">
-                        ({{ supervisor.options.balance.charAt(0).toUpperCase() + supervisor.options.balance.slice(1) }})
-                    </td>
-                    <td class="text-right" v-else>
-                        (Disabled)
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-=======
         <div class="card card-primary mt-2">
             <div class="card-header">
                 <h5 class="card-title">Gráfico Produtos x Dias</h5>
@@ -690,7 +440,6 @@
                 </table>
             </div> 
         -->
->>>>>>> bc8be47... Customização final do Horizon
 
     </div>
 </template>
