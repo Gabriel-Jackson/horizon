@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-<script type="text/ecmascript-6">
-    import Chart from 'chart.js';
-
-    export default {
-        props: ['data'],
-=======
 <script >
     import Chart from 'chart.js';
 
     export default {
-        props: ['data','options'],
->>>>>>> bc8be47... Customização final do Horizon
+        props: ['chartData', "options"],
 
         data(){
             return {
@@ -23,7 +15,7 @@
             this.context = this.$refs.canvas.getContext('2d');
 
             this.chart = new Chart(this.context, {
-                type: 'line',
+                type: 'bar',
                 options: {
                     legend: {
                         display: false,
@@ -57,47 +49,20 @@
                                 afterTickToLabelConversion: function (data) {
                                     var xLabels = data.ticks;
 
-                                    xLabels.forEach(function (labels, i) {
-                                        if (i % 6 != 0 && (i + 1) != xLabels.length) {
-                                            xLabels[i] = '';
-                                        }
-                                    });
+                                    // xLabels.forEach(function (labels, i) {
+                                    //     if (i % 6 != 0 && (i + 1) != xLabels.length) {
+                                    //         xLabels[i] = '';
+                                    //     }
+                                    // });
                                 }
                             },
                         ]
-<<<<<<< HEAD
-                    }
-                },
-                data: this.data
-            });
-        },
-=======
                     },
                     ...this.options
                 },
                 data: this.chartData
             });
         },
-        computed: {
-            chartData(){
-                return this.data;
-            }
-        },
-        watch:{
-            "$chartData": {
-                immediate: true,
-                deep: true,
-                handler(val, oldVal) {
-                    console.log("Updated");
-                    if(this.chart){
-                        console.log("With Chart");
-
-                        this.chart.update();
-                    }
-                }
-            }
-        }
->>>>>>> bc8be47... Customização final do Horizon
     }
 </script>
 

@@ -12,6 +12,10 @@ Route::prefix('api')->group(function () {
     // Master Supervisor Routes...
     Route::get('/masters', 'MasterSupervisorController@index')->name('horizon.masters.index');
 
+<<<<<<< HEAD
+=======
+    Route::post('/supervisors/{supervisor}', 'SupervisorsController@index')->name('horizon.supervisors.index');
+>>>>>>> bc8be47... Customização final do Horizon
     // Monitoring Routes...
     Route::get('/monitoring', 'MonitoringController@index')->name('horizon.monitoring.index');
     Route::post('/monitoring', 'MonitoringController@store')->name('horizon.monitoring.store');
@@ -41,4 +45,8 @@ Route::prefix('api')->group(function () {
 });
 
 // Catch-all Route...
+<<<<<<< HEAD
 Route::get('/{view?}', 'HomeController@index')->where('view', '(.*)')->name('horizon.index');
+=======
+Route::get('/{view?}', 'HomeController@index')->middleware('auth')->where('view', '(.*)')->name('horizon.index');
+>>>>>>> bc8be47... Customização final do Horizon

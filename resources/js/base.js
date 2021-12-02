@@ -1,5 +1,10 @@
 import moment from 'moment-timezone';
 
+<<<<<<< HEAD
+=======
+moment.locale('pt-br');
+$('.dropdown-toggle').dropdown();
+>>>>>>> bc8be47... Customização final do Horizon
 export default {
     computed: {
         Horizon() {
@@ -12,7 +17,12 @@ export default {
          * Format the given date with respect to timezone.
          */
         formatDate(unixTime) {
+<<<<<<< HEAD
             return moment(unixTime * 1000).add(new Date().getTimezoneOffset() / 60);
+=======
+            unixTime = moment(unixTime *1000).isValid()? unixTime * 1000: unixTime;
+            return moment(unixTime).add(new Date().getTimezoneOffset() / 60);
+>>>>>>> bc8be47... Customização final do Horizon
         },
 
         /**

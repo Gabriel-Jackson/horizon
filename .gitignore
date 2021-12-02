@@ -4,4 +4,8 @@
 /public/app.js.LICENSE.txt
 /phpunit.xml
 composer.lock
+<<<<<<< HEAD
 .phpunit.result.cache
+=======
+.phpunit.result.cache
+>>>>>>> bc8be47... Customização final do Horizon

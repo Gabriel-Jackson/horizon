@@ -36,10 +36,14 @@ mix.options({
                 '@': path.resolve(__dirname, 'resources/js/'),
             },
         },
+<<<<<<< HEAD
         plugins: [
             new webpack.IgnorePlugin({
                 resourceRegExp: /^\.\/locale$/,
                 contextRegExp: /moment$/,
             }),
         ],
+=======
+        // plugins: [new webpack.IgnorePlugin({ resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/})],
+>>>>>>> bc8be47... Customização final do Horizon
     });

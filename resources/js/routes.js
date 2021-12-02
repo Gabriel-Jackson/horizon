@@ -8,6 +8,7 @@ export default [
     },
 
     {
+<<<<<<< HEAD
         path: '/monitoring',
         name: 'monitoring',
         component: require('./screens/monitoring/index').default,
@@ -55,6 +56,11 @@ export default [
         path: '/metrics/:type/:slug',
         name: 'metrics-preview',
         component: require('./screens/metrics/preview').default,
+=======
+        path: '/queues',
+        name: 'queues',
+        component: require('./screens/queues/index').default,
+>>>>>>> bc8be47... Customização final do Horizon
     },
 
     {

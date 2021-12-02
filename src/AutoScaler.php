@@ -139,7 +139,11 @@ class AutoScaler
             $pool->scale(
                 min(
                     $totalProcessCount + $maxUpShift,
+<<<<<<< HEAD
                     $supervisor->options->maxProcesses - (($supervisor->processPools->count() - 1) * $supervisor->options->minProcesses),
+=======
+                    $supervisor->options->maxProcesses,
+>>>>>>> bc8be47... Customização final do Horizon
                     $desiredProcessCount
                 )
             );

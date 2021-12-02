@@ -33,8 +33,12 @@ class ContinueSupervisorCommand extends Command
     public function handle(SupervisorRepository $supervisors)
     {
         $processId = optional(collect($supervisors->all())->first(function ($supervisor) {
+<<<<<<< HEAD
             return Str::startsWith($supervisor->name, MasterSupervisor::basename())
                     && Str::endsWith($supervisor->name, $this->argument('name'));
+=======
+            return Str::endsWith($supervisor->name, $this->argument('name'));
+>>>>>>> bc8be47... Customização final do Horizon
         }))->pid;
 
         if (is_null($processId)) {

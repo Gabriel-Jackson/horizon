@@ -1,30 +1,22 @@
 <template>
     <tr>
         <td>
-            <router-link :title="job.name" :to="{ name: $route.params.type+'-jobs-preview', params: { jobId: job.id }}">
+            <router-link :title="job.name" :to="{ name: $parent.type != 'failed' ? 'completed-jobs-preview' : 'failed-jobs-preview', params: { jobId: job.id }}">
                 {{ jobBaseName(job.name) }}
             </router-link>
 
             <small class="badge badge-secondary badge-sm"
                     v-tooltip:top="`Delayed for ${delayed}`"
                     v-if="delayed && (job.status == 'reserved' || job.status == 'pending')">
-<<<<<<< HEAD
                 Delayed
-=======
-                Atrasado
->>>>>>> bc8be47... Customização final do Horizon
             </small>
 
             <br>
 
             <small class="text-muted">
-<<<<<<< HEAD
-                Queue: {{job.queue}}
-=======
                 Fila: {{job.queue}}
->>>>>>> bc8be47... Customização final do Horizon
 
-                <span v-if="job.payload.tags && job.payload.tags.length" class="text-break">
+                <span v-if="job.payload.tags.length">
                     | Tags: {{ job.payload.tags && job.payload.tags.length ? job.payload.tags.slice(0,3).join(', ') : '' }}<span v-if="job.payload.tags.length > 3"> ({{ job.payload.tags.length - 3 }} more)</span>
                 </span>
             </small>
@@ -34,29 +26,21 @@
             {{ readableTimestamp(job.payload.pushedAt) }}
         </td>
 
-        <td v-if="$route.params.type=='completed'" class="table-fit">
-<<<<<<< HEAD
-            {{ readableTimestamp(job.completed_at) }}
+        <td v-if="$parent.type == 'jobs'" class="table-fit">
+            {{ job.completed_at ? readableTimestamp(job.completed_at) : '-' }}
         </td>
 
-        <td v-if="$route.params.type=='completed'" class="table-fit">
+        <td v-if="$parent.type == 'jobs'" class="table-fit">
             <span>{{ job.completed_at ? (job.completed_at - job.reserved_at).toFixed(2)+'s' : '-' }}</span>
-=======
-            {{  readableTimestamp(job.completed_at) }}
         </td>
 
-        <td v-if="$route.params.type=='completed'" class="text-right">
-            <span>{{ runtime }}</span>
->>>>>>> bc8be47... Customização final do Horizon
+        <td v-if="$parent.type == 'failed'" class="table-fit">
+            {{ readableTimestamp(job.failed_at) }}
         </td>
     </tr>
 </template>
 
-<<<<<<< HEAD
 <script type="text/ecmascript-6">
-=======
-<script >
->>>>>>> bc8be47... Customização final do Horizon
     import phpunserialize from 'phpunserialize'
     import moment from 'moment-timezone';
 
@@ -67,10 +51,7 @@
                 required: true
             }
         },
-<<<<<<< HEAD
 
-=======
->>>>>>> bc8be47... Customização final do Horizon
         computed: {
             unserialized() {
                 try {
@@ -81,27 +62,13 @@
             },
 
             delayed() {
-                if (this.unserialized && this.unserialized.delay && this.unserialized.delay.date) {
+                if (this.unserialized && this.unserialized.delay) {
                     return moment.tz(this.unserialized.delay.date, this.unserialized.delay.timezone)
-                        .fromNow(true);
-                } else if (this.unserialized && this.unserialized.delay) {
-                    return this.formatDate(this.job.payload.pushedAt).add(this.unserialized.delay, 'seconds')
                         .fromNow(true);
                 }
 
                 return null;
             },
-<<<<<<< HEAD
-=======
-
-            runtime() {
-                if(moment(this.job.completed_at).isValid()){
-                    return moment(this.job.completed_at).diff(this.job.reserved_at, "seconds") + "s"
-                }
-
-                return "-"
-            }
->>>>>>> bc8be47... Customização final do Horizon
         },
     }
 </script>

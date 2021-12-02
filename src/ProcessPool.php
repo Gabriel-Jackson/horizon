@@ -323,7 +323,11 @@ class ProcessPool implements Countable
      *
      * @return int
      */
+<<<<<<< HEAD
     public function count(): int
+=======
+    public function count()
+>>>>>>> bc8be47... Customização final do Horizon
     {
         return count($this->processes);
     }
